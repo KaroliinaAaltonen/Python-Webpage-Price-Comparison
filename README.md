@@ -8,3 +8,6 @@ V.2
   excel in their respective columns.
   Changed the structure of the program so that functions are grouped into classes, implemented some parallel processing with concurrent.futures and lambda, switched to local driver session (that is also ended omg), 
   and changed the sleep-time to comply the websites' robots.txt.
+
+V.3
+  Also handles Bauhaus data, product links are now directly to product page instead of search page. Sound notification when program is done executing. K-Rauta          scraping doesn't have function to check if the product can be found so currently the code probably crashes if some product doesn't exist on their website.
