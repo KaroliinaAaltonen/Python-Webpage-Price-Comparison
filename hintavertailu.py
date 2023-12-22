@@ -360,18 +360,19 @@ class ExcelHandler:
                     # Process results and update the sheet accordingly
                     # My first time using lambda or concurrent.futures so allow it
                     if results[0]: #PRISMA INFO TO EXCEL
-                        sheet.cell(row=row[0].row, column=target_column_index + 1, value=results[0][0].upper())
-                        sheet.cell(row=row[0].row, column=target_column_index + 2, value=results[0][2])
+                        sheet.cell(row=row[0].row, column=target_column_index + 1, value=results[0][0].upper()) # product name
+                        sheet.cell(row=row[0].row, column=target_column_index + 2, value=results[0][2])         # brand
+                        current_row = row[0].row
                         current_column = target_column_index + 2
-                        format_product_link(results[0][1], results[0][0], sheet, current_row, current_column)
+                        format_product_link(results[0][1], results[0][0], sheet, current_row, current_column)   # link with product name as label
                     if results[1]: #K-RAUTA INFO TO EXCEL
-                        sheet.cell(row=row[0].row, column=target_column_index + 3, value=results[1][1])
+                        sheet.cell(row=row[0].row, column=target_column_index + 3, value=results[1][1])         # price
                         current_row = row[0].row
                         current_column = target_column_index + 4
-                        format_product_link(results[1][0], results[1][2], sheet, current_row, current_column)
+                        format_product_link(results[1][0], results[1][2], sheet, current_row, current_column)   # link with product name as label
                     else:
-                        sheet.cell(row=row[0].row, column=target_column_index + 3, value="")
-                        sheet.cell(row=row[0].row, column=target_column_index + 4, value="")
+                        sheet.cell(row=row[0].row, column=target_column_index + 3, value="")                    # leave K-rauta price empty
+                        sheet.cell(row=row[0].row, column=target_column_index + 4, value="")                    # leave K-rauta link empty
                     if results[4]: #BAUHAUS INFO TO EXCEL
                         sheet.cell(row=row[0].row, column=target_column_index + 5, value=results[4][1])
                         current_row = row[0].row
