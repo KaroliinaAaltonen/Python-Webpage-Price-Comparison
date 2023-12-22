@@ -363,7 +363,7 @@ class ExcelHandler:
                         sheet.cell(row=row[0].row, column=target_column_index + 1, value=results[0][0].upper()) # product name
                         sheet.cell(row=row[0].row, column=target_column_index + 2, value=results[0][2])         # brand
                         current_row = row[0].row
-                        current_column = target_column_index + 2
+                        current_column = target_column_index + 1
                         format_product_link(results[0][1], results[0][0], sheet, current_row, current_column)   # link with product name as label
                     if results[1]: #K-RAUTA INFO TO EXCEL
                         sheet.cell(row=row[0].row, column=target_column_index + 3, value=results[1][1])         # price
@@ -408,56 +408,14 @@ class ExcelHandler:
         return 0
 
 
-# Function to play notes
-def play_note(note, duration):
-    # Define the notes and their frequencies
-    notes = {
-        'G': 392,
-        'G#': 415,
-        'A': 440,
-        'A#': 466,
-        'B': 494,
-        'C': 523,
-        'C#': 554,
-        'D': 587,
-        'D#': 622,
-        'E': 659,
-        'F': 698,
-        'F#': 740,
-        'G_': 784,  # G octave up
-    }
-    winsound.Beep(notes[note], duration)
-    return None
-
-# Class to play the Imperial March
-class ProgramFinisher:
-    @staticmethod
-    def maestro():
-        imperial_march = [
-            ('E', 500), ('E', 500), ('F', 500), ('G', 350),
-            ('G', 150), ('F', 500), ('E', 350), ('D#', 150),
-            ('D', 1000), ('G_', 500), ('G', 350), ('G', 150),
-            ('A#', 500), ('A', 350), ('G', 150), ('F#', 1000),
-            ('F', 500), ('E', 350), ('F', 150), ('G', 1000),
-            ('G_', 500), ('G', 350), ('G', 150), ('A#', 500),
-            ('A', 350), ('G', 150), ('F#', 1000), ('F', 500),
-            ('E', 350), ('F', 150), ('G', 1000), ('G_', 500),
-            ('G', 350), ('G', 150), ('A#', 500), ('A', 350),
-            ('G', 150), ('F#', 1000), ('F', 500), ('E', 350),
-            ('D#', 150), ('D', 1000)
-        ]
-
-        for note, duration in imperial_march:
-            play_note(note, duration)
-            # Add a small delay between notes
-            time.sleep(0.01)
-        return None
 # Main
 start_time = time.time()
 handler = ExcelHandler()
 handler.handle()
 end_time = time.time()
 elapsed_time = end_time - start_time
-print(f"This program took: {elapsed_time:.2f} seconds to run. Kiitos ja anteeksi.")
 # Play a sound when done
-ProgramFinisher.maestro()
+if __name__ == "__main__":
+    print(f"This program took: {elapsed_time:.2f} seconds to run. Kiitos ja anteeksi.")
+    for _ in range(3):
+        winsound.Beep(1000, 500)
