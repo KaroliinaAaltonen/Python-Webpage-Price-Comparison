@@ -11,3 +11,6 @@ V.2
 
 V.3
   Also handles Bauhaus data, product links are now directly to product page instead of search page. Sound notification when program is done executing. K-Rauta          scraping doesn't have function to check if the product can be found so currently the code probably crashes if some product doesn't exist on their website.
+
+V.4
+Scrapper classes are uniform. There is error handling in each function (just basic try-except Exception). 
